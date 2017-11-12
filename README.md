@@ -25,6 +25,8 @@ The main function of the FLASH-Pi is to **convert the voltage levels** and **iso
 * Overcurrent protection (polyfuses) on the 5V and 3.3V rails supplied by the RPi
 * Labelled RaspberryPi GPIO pins for easy wiring and experiments.
 
+![alt text][pic3]
+
 #### Circuit design:
 Initially i used the TXS0104 chip to level shift SPI bus, which turned out to be a trap (always read the datasheet carefully!). The condition of VCCA (3.3V Raspi side) > VCCB (Target) could not be met for 1.8V output level. Since the SPI lines does not have to be bidirectional i ended up using four SN74LV1T125 buffers specifically designed to up/down translate the levels in wide ranges.  
 RaspberryPi provides 5V and 3.3V power rails. Both rails are protected with polyfuses, 100mA for the 5V line and 50mA for the 3.3V one. The 1.8V rail is generated with the MCP1700T-1802 voltage regulator. Target voltage level is set with a 4 way slider switch.  
